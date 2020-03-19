@@ -17,6 +17,11 @@ import QuartzCore
 import AppKit
 #endif
 
+public protocol RotateProtocol {
+    
+    func didRotate()
+    
+}
 
 /// Base class of PieChartView and RadarChartView.
 open class PieRadarChartViewBase: ChartViewBase
