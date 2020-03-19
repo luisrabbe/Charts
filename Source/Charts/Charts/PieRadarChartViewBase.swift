@@ -26,6 +26,9 @@ public protocol RotateProtocol {
 /// Base class of PieChartView and RadarChartView.
 open class PieRadarChartViewBase: ChartViewBase
 {
+    
+    public var rotateDelegate : RotateProtocol?
+    
     /// holds the normalized version of the current rotation angle of the chart
     private var _rotationAngle = CGFloat(270.0)
     
@@ -490,6 +493,7 @@ open class PieRadarChartViewBase: ChartViewBase
     
     internal final func processRotationGestureBegan(location: CGPoint)
     {
+        rotateDelegate?.didRotate()
         self.resetVelocity()
         
         if rotationEnabled
@@ -504,6 +508,7 @@ open class PieRadarChartViewBase: ChartViewBase
     
     internal final func processRotationGestureMoved(location: CGPoint)
     {
+        rotateDelegate?.didRotate()
         if isDragDecelerationEnabled
         {
             sampleVelocity(touchLocation: location)
@@ -527,6 +532,7 @@ open class PieRadarChartViewBase: ChartViewBase
     
     internal final func processRotationGestureEnded(location: CGPoint)
     {
+        rotateDelegate?.didRotate()
         if isDragDecelerationEnabled
         {
             stopDeceleration()
