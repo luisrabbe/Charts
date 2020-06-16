@@ -20,6 +20,16 @@ import AppKit
 public protocol RotateProtocol {
     
     func didRotate()
+    func didRotate(chart : PieRadarChartViewBase)
+    
+}
+
+extension RotateProtocol {
+    
+    //Empty implementation to make it optional
+    func didRotate(chart : PieRadarChartViewBase){
+    
+    }
     
 }
 
@@ -494,6 +504,7 @@ open class PieRadarChartViewBase: ChartViewBase
     internal final func processRotationGestureBegan(location: CGPoint)
     {
         rotateDelegate?.didRotate()
+        rotateDelegate?.didRotate(chart: self)
         self.resetVelocity()
         
         if rotationEnabled
@@ -509,6 +520,7 @@ open class PieRadarChartViewBase: ChartViewBase
     internal final func processRotationGestureMoved(location: CGPoint)
     {
         rotateDelegate?.didRotate()
+        rotateDelegate?.didRotate(chart: self)
         if isDragDecelerationEnabled
         {
             sampleVelocity(touchLocation: location)
@@ -533,6 +545,7 @@ open class PieRadarChartViewBase: ChartViewBase
     internal final func processRotationGestureEnded(location: CGPoint)
     {
         rotateDelegate?.didRotate()
+        rotateDelegate?.didRotate(chart: self)
         if isDragDecelerationEnabled
         {
             stopDeceleration()
