@@ -24,7 +24,7 @@ public protocol RotateProtocol {
     
 }
 
-extension RotateProtocol {
+public extension RotateProtocol {
     
     //Empty implementation to make it optional
     func didRotate(chart : PieRadarChartViewBase){
