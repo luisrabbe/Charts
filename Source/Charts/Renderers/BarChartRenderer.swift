@@ -432,26 +432,26 @@ open class BarChartRenderer: BarLineScatterCandleBubbleRenderer
             }
             
             //Changed for gradient
-//            if !isSingleColor
-//            {
-//                // Set the color for the currently drawn value. If the index is out of bounds, reuse colors.
-//                context.setFillColor(dataSet.color(atIndex: j).cgColor)
-//            }
+            if !isSingleColor
+            {
+                // Set the color for the currently drawn value. If the index is out of bounds, reuse colors.
+                context.setFillColor(dataSet.color(atIndex: j).cgColor)
+            }
             
             //Changed for rounded
 //            context.fill(barRect)
             
             //Changed for gradient
-//            let bezierPath = UIBezierPath(roundedRect: barRect, cornerRadius: barCornerRadius)
-//            context.addPath(bezierPath.cgPath)
-//
-//            context.drawPath(using: .fill)
+            let bezierPath = UIBezierPath(roundedRect: barRect, cornerRadius: barCornerRadius)
+            context.addPath(bezierPath.cgPath)
+
+            context.drawPath(using: .fill)
             
-            drawBar(context: context, dataSet: dataSet, index: j, barRect: barRect)
+//            drawBar(context: context, dataSet: dataSet, index: j, barRect: barRect)
             
             if drawBorder
             {
-                context.saveGState()
+//                context.saveGState()
                 context.setStrokeColor(borderColor.cgColor)
                 context.setLineWidth(borderWidth)
                 context.stroke(barRect)
