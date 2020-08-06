@@ -33,7 +33,10 @@ class AnotherBarChartViewController: DemoBaseViewController {
                         .saveToGallery,
                         .togglePinchZoom,
                         .toggleData,
-                        .toggleBarBorders]
+                        .toggleBarBorders,
+                        .toggleBarGradient]
+        
+        
         
         chartView.delegate = self
         
@@ -89,7 +92,20 @@ class AnotherBarChartViewController: DemoBaseViewController {
     }
     
     override func optionTapped(_ option: Option) {
-        super.handleOption(option, forChartView: chartView)
+        switch option {
+        case .toggleBarGradient:
+            for set in chartView.data!.dataSets as! [BarChartDataSet] {
+                if set.barGradientColors == nil {
+                    set.barGradientColors = ChartColorTemplates.gradients()
+                    set.barGradientOrientation = .horizontal
+                } else {
+                    set.barGradientColors = nil
+                }
+            }
+            chartView.notifyDataSetChanged()
+        default:
+            super.handleOption(option, forChartView: chartView)
+        }
     }
     
     // MARK: - Actions
