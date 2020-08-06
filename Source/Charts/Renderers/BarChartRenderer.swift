@@ -447,6 +447,8 @@ open class BarChartRenderer: BarLineScatterCandleBubbleRenderer
 //
 //            context.drawPath(using: .fill)
             
+            drawBar(context: context, dataSet: dataSet, index: j, barRect: barRect)
+            
             if drawBorder
             {
                 context.saveGState()
