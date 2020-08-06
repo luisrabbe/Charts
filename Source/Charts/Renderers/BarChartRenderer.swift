@@ -520,7 +520,8 @@ open class BarChartRenderer: BarLineScatterCandleBubbleRenderer
         context.addPath(bezierPath.cgPath)
 
 //        context.addPath(path)
-        context.clip()
+//        context.clip()
+        context.drawPath(using: .fill)
         context.drawLinearGradient(gradient!, start: startPoint, end: endPoint, options: [])
     }
     
