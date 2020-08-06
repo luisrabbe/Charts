@@ -473,7 +473,7 @@ open class BarChartRenderer: BarLineScatterCandleBubbleRenderer
             }
         }
         
-        //context.restoreGState()
+        context.restoreGState()
     }
     
     open func drawBar(context: CGContext, dataSet: IBarChartDataSet, index: Int, barRect: CGRect)
@@ -520,8 +520,7 @@ open class BarChartRenderer: BarLineScatterCandleBubbleRenderer
         context.addPath(bezierPath.cgPath)
 
 //        context.addPath(path)
-//        context.clip()
-        context.drawPath(using: .fill)
+        context.clip()
         context.drawLinearGradient(gradient!, start: startPoint, end: endPoint, options: [])
     }
     
